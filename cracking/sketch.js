@@ -47,7 +47,7 @@ class Triangle {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
-        this.color = 240 - ~~(Math.random()*100)*0;
+        this.color = 240 - ~~(Math.random()*50);
     }
 
     pointInTriangle(randomness) {
