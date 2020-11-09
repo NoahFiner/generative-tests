@@ -15,8 +15,8 @@ class Point {
     }
 
     move() {
-        this.x += 1*(Math.random() - 0.5);
-        this.y += 1*(Math.random() - 0.5);
+        this.x += 2*(Math.random() - 0.5);
+        this.y += 2*(Math.random() - 0.5);
     }
 
     rotate(angle) {
@@ -136,7 +136,7 @@ function draw() {
     background(15);
     translate(width/2, height/2 - 100);
     
-    // centers.forEach(pt => pt.move());
+    centers.forEach(pt => pt.move());
 
     polygons.forEach(poly => poly.draw());
 }
