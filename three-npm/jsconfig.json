@@ -1,0 +1,6 @@
+{
+    "typeAcquisition": {
+    "include": [
+        "dt~three"
+    ]}
+}

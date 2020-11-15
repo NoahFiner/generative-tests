@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+
+            #c {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        </style>
+        <script type="module">
+            import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/build/three.module.js';
+
+            (function main() {
+                const canvas = document.querySelector("#c");
+                const renderer = new THREE.WebGLRenderer({canvas});
+
+                const fov = 75;
+                const aspect = 2;
+                const near = 0.1;
+                const far = 5;
+                const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+
+                camera.position.z = 4;
+
+                const scene = new THREE.Scene();
+                scene.background = new THREE.Color(0xaaaaaa);
+
+                const boxGeometry = new THREE.BoxBufferGeometry(0.5, 1, 2, 2, 2, 2);
+
+                const geometry = new THREE.EdgesGeometry(boxGeometry);
+
+                const material = new THREE.MeshPhongMaterial({color: 0xffffff});
+
+                const shape = new THREE.Mesh(geometry, material);
+
+                scene.add(shape);
+
+                const intensity = 1;
+                const light = new THREE.DirectionalLight(0xffffff, intensity);
+                light.position.set(-1, 2, 4);
+                scene.add(light);
+
+                renderer.render(scene, camera);
+
+                function resizeRendererToDisplaySize(renderer) {
+                    const canvas = renderer.domElement;
+                    const pixelRatio = window.devicePixelRatio;
+                    const width = canvas.clientWidth;
+                    const height = canvas.clientHeight;
+                    const needResize = canvas.width !== width || canvas.height !== height;
+                    if(needResize) renderer.setSize(width, height, false);
+                    return needResize;
+                }
+
+                renderer.setPixelRatio(window.devicePixelRatio);
+
+
+                resizeRendererToDisplaySize(renderer);
+
+                function render(time) {
+                    time *= 0.001;
+
+                    if(resizeRendererToDisplaySize(renderer)) {
+                        const canvas = renderer.domElement;
+                        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                        camera.updateProjectionMatrix();
+                    }
+
+                    const rot = time;
+                    shape.rotation.x = rot;
+                    shape.rotation.y = rot;
+
+                    camera.position.x = rot;
+
+                    renderer.render(scene, camera);
+                    requestAnimationFrame(render);
+                }
+                requestAnimationFrame(render);
+            })();
+        </script>
+    </head>
+    <body>
+        <canvas id="c"></canvas>
+    </body>
+</html>
