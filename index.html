@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #F5F5F5;
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+                transform: translateY(50px)
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .outer {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .fadein {
+            animation: fadein 0.5s ease
+        }
+
+        .hover-animation {
+            transform: scale(1);
+            transform-origin: 0 50%;
+            transition: transform 0.25s;
+        }
+        .hover-animation:hover {
+            transform: scale(1.05);
+        }
+
+        .bigtitle {
+            hyphens: manual;
+            width: 85vw;
+            font-family: 'Dela Gothic One', cursive;
+            font-size: 10rem;
+            line-height: 0.9;
+            margin-bottom: 4rem;
+            z-index: 100;
+        }
+
+        .squares::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 2rem;
+            left: 1rem;
+            height: 18rem;
+            width: 40rem;
+            z-index: -1;
+            background-color: #FF206E;
+            transform: rotate(15deg);
+        }
+
+        .squares::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 3rem;
+            left: 4rem;
+            height: 45rem;
+            width: 2rem;
+            z-index: -1;
+            background-color: #41EAD4;
+            transform: rotate(-50deg);
+        }
+
+        .container {
+            padding: 8rem 2rem;
+            position: relative;
+            width: 100vw;
+        }
+        .container a {
+            text-shadow: 0 0 3px #f5f5f5;
+        }
+        .container > p {
+            text-shadow: 0 0 3px #f5f5f5;
+        }
+        .container.black {
+            background-color: #0C0F0A;
+            color: #FBFF12;
+        }
+
+        .container.black a {
+            text-shadow: 0 0 3px #0C0F0A;
+        }
+
+        .container.black > p {
+            z-index: 100;
+            text-shadow: 0 0 3px #0C0F0A;
+        }
+
+        .cool-image {
+            height: 30rem;
+            width: 30rem;
+            position: absolute;
+            right: 6rem;
+            top: -5rem;
+            background-size: cover;
+            border: 5px solid #FF206E;
+            z-index: 0;
+            box-shadow: 25px 50px 40px rgba(0, 0, 0, 0.15);
+            animation: coolanimation 10s ease infinite;
+        }
+
+        @keyframes coolanimation {
+            0% {
+                transform: rotate3d(1, 0.3, .5, 30deg);
+            }
+
+            50% {
+                transform: rotate3d(1, 0.3, .5, -45deg);
+            }
+
+            75% {
+                transform: rotate3d(1, 0.3, .5, 0deg);
+            }
+
+            100% {
+                transform: rotate3d(1, 0.3, .5, 30deg);
+            }
+        }
+
+        .cool-subtitle {
+            font-size: 1.5rem;
+            margin-top: 5rem;
+            width: 50%;
+            min-width: 400px;
+            transform: scale(1);
+        }
+
+        @media only screen and (max-width: 800px) {
+            .bigtitle {
+                width: 80vw;
+                font-size: 4rem;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div class="outer">
+            <div class="container squares">
+                <h1 class="bigtitle fadein">a big ol webpage with generative art</h1>
+                <p class="cool-subtitle">made by noah finer and the power of javascript</p>
+            </div>
+            <div class="container black">
+                <div class="cool-image" style="background-image: url('images/fluid.png')"></div>
+                <div class="hover-animation">
+                    <a class="bigtitle" href="fluid/index.html" target="_blank">broken fluid simulation</a>
+                </div>
+                <p class="cool-subtitle">an attempt to use vector fields and some turbulence to make a fluid simulation. completely failed but i manually messed with the numbers so it looks good. move your mouse and click to add turbulence. pretend this acts like actual physics</p>
+            </div>
+
+            <div class="container">
+                <div class="cool-image" style="animation-delay: -5s; background-image: url('images/3d-cracking.png')"></div>
+                <div class="hover-animation">
+                    <a class="bigtitle" href="3d-cracking/index.html" target="_blank">3d cracking simulation</a>
+                </div>
+                <p class="cool-subtitle">screwing around with 3js. press the spacebar to subdivide some shapes into smaller shapes but sort of in three dimensions. click and drag to rotate.<br>**WARNING** you will crash ur web browser if u hit space more than 9 times</p>
+            </div>
+
+            <div class="container black">
+                <div class="cool-image" style="animation-delay: -8s; background-image: url('images/circles.png')"></div>
+                <div class="hover-animation">
+                    <a class="bigtitle" href="circles/index.html" target="_blank">circles making circles</a>
+                </div>
+                <p class="cool-subtitle">mini circles making bigger circles around ur cursor using sine waves based on like the distance of the circles to your mouse. something like that.</p>
+            </div>
+
+            <div class="container">
+                <div class="cool-image" style="animation-delay: -2s; background-image: url('images/cracking.png')"></div>
+                <div class="hover-animation">
+                    <a class="bigtitle" href="cracking/index.html" target="_blank">cracking a shape</a>
+                </div>
+                <p class="cool-subtitle">subdividing a shape into smaller shapes for a cool effect. click to crack the shape, but don't do it more than 9 times or else your browser explodes. my apologies.</p>
+            </div>
+
+            <div class="container black">
+                <div class="cool-image" style="animation-delay: -5s; background-image: url('images/dots.png')"></div>
+                <div class="hover-animation">
+                    <a class="bigtitle" href="dots/index.html" target="_blank">some ripply dot stuff</a>
+                </div>
+                <p class="cool-subtitle">something using open simplex noise to generate waves that move through a sea of dots</p>
+            </div>
+
+            <div class="container">
+                <div class="cool-image" style="animation-delay: -9s; background-image: url('images/solarsystem.png')"></div>
+                <div class="hover-animation">
+                    <a class="bigtitle" href="threejs/solar-system.html" target="_blank">solar system but minecraft</a>
+                </div>
+                <p class="cool-subtitle">cube solar system made when learning about threejs. not really generative art but looks sick.</p>
+            </div>
+        </div>
+    </body>
+</html>
