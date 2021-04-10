@@ -32,10 +32,10 @@ class Polygon {
     constructor(points) {
         this.p = points;
         // grayscale
-        // this.color = 240 - ~~(Math.random() * 50;
+        this.color = 240 - ~~(Math.random() * 50);
 
         // dope colors
-        this.color = color(~~(Math.random()*200) + 25, ~~(Math.random()*200) + 25, ~~(Math.random()*200) + 25);
+        // this.color = color(~~(Math.random()*200) + 25, ~~(Math.random()*200) + 25, ~~(Math.random()*200) + 25);
     }
 
     pointInPolygon(randomness) {
@@ -82,7 +82,8 @@ class Polygon {
 
     draw() {
         fill(this.color);
-        stroke(0, 0);
+        strokeWeight(1);
+        stroke(50, 50, 50);
         beginShape();
         this.p.forEach(p => {
             vertex(p.x, p.y);
@@ -136,7 +137,8 @@ function draw() {
     background(15);
     translate(width/2, height/2 - 100);
     
-    centers.forEach(pt => pt.move());
+    // dope animations
+    // centers.forEach(pt => pt.move());
 
     polygons.forEach(poly => poly.draw());
 }
